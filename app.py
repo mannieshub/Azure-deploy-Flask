@@ -2,24 +2,21 @@ import numpy as np
 from flask import Flask , request , jsonify , render_template
 import pickle
 
-#from waitress import serve
-
 #Create flask app
-application = Flask(__name__)
+app = Flask(__name__)
 
 #Load the pickle model
 model = pickle.load(open("model.pkl","rb"))
 
 #mode ="dev"
 
-@application.route("/")
+@app.route("/")
 
 #test on PC
 def Home():
     return render_template("index.html")
 
-
-@application.route("/predict",methods = ["POST"])
+@app.route("/predict",methods = ["POST"])
 def predict():
     #รับค่า request มาแปลงเป็น float
     float_features = [float(x) for x in request.form.values()]
@@ -43,4 +40,4 @@ def predict():
     return jsonify(result)
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
