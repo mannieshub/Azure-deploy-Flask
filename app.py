@@ -28,7 +28,7 @@ def predict():
     probabilities  = model.predict_proba(features)
     probabilities_percent = probabilities* 100
 
-    percent = probabilities_percent[0][1];
+    percent = probabilities_percent[0][1]
 
 
 
