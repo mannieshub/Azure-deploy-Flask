@@ -16,6 +16,10 @@ model = pickle.load(open("model.pkl","rb"))
 def Home():
     return render_template("index.html")
 
+@app.route("/restart")
+def return_status():
+    return jsonify("Restart Server")
+
 @app.route("/predict",methods = ["POST"])
 def predict():
     #รับค่า request มาแปลงเป็น float
